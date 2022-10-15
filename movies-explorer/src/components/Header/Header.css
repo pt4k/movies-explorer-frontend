@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0;
+  margin: 0 auto;
+  background: #073042;
+  font-family: 'Inter';
+}
+
+.logo {
+  width: 38px;
+  margin: 18px 0 18px 70px;
+}
+
+.header__buttons {
+  margin: 21px 70px 21px 0;
+}
+.header__button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  background: transparent;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.header__button-reg {
+  margin-right: 30px;
+}
+
+.header__button-log {
+  width: 76px;
+  height: 32px;
+  background: #3ddc84;
+  color: #000;
+  border-radius: 3px;
+}

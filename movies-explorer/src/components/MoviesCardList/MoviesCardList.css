@@ -1,0 +1,6 @@
+.movies {
+  display: grid;
+  grid: repeat(4, 242px) / repeat(4, 270px);
+  gap: 38px 20px;
+  justify-content: center;
+}

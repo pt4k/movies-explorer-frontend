@@ -1,1 +1,74 @@
+.aboutProject {
+  font-family: 'Inter';
+  padding: 110px 70px;
+  background: #202020;
+  color: #ffffff;
+}
 
+.aboutProject__header {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #686868;
+}
+
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 110px;
+}
+
+.columns {
+  width: 550px;
+}
+
+.columns__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.columns__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.time {
+  display: flex;
+}
+
+.time__backend {
+  flex-basis: 228px;
+}
+.time__frontend {
+  flex-grow: 1;
+}
+
+.time__title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+
+.time__title_color_green {
+  background: #3ddc84;
+  color: #000;
+}
+
+.time__title_color_grey {
+  background: #303030;
+}
+
+.time__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: #8b8b8b;
+  margin: 14px 0 0;
+}

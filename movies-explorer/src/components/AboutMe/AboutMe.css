@@ -1,0 +1,55 @@
+.aboutMe {
+  font-family: 'Inter';
+  padding: 110px 70px 100px;
+  background: #202020;
+  color: #ffffff;
+}
+
+.aboutMe__header {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  margin: 0 0 66px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #686868;
+}
+
+.aboutMe__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutMe__name {
+  margin: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+}
+
+.aboutMe__speciality {
+  margin: 26px 0 18px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.aboutMe__about {
+  margin: 0;
+  width: 600px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.aboutMe__link {
+  margin: 100px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.aboutMe__photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+}
