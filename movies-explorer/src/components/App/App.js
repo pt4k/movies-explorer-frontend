@@ -9,10 +9,12 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
 
   return (
     <div className='page'>
@@ -52,6 +54,8 @@ function App() {
           <NotFoundPage />
         </Route>
       </Switch>
+
+      <BurgerMenuPopup isOpen={isOpenPopup} />
     </div>
   );
 }

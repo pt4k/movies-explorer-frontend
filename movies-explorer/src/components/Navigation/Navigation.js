@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import acc from '../../images/acc.svg';
 import burger_menu from '../../images/burger_menu.svg';
 import './Navigation.css';
+import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 
 function Navigation({ loggedIn }) {
   return (
@@ -40,6 +41,7 @@ function Navigation({ loggedIn }) {
           </Link>
         </div>
       )}
+      <BurgerMenuPopup />
     </section>
   );
 }
