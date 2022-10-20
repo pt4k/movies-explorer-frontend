@@ -1,0 +1,130 @@
+.navigation {
+  margin: 0;
+}
+.navigation__onLog {
+  max-width: 1172px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation__links {
+  margin: 28px 746px 28px 44px;
+}
+
+.navigation__link {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: right;
+  margin-right: 16px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.navigation__link:hover {
+  opacity: 0.5;
+}
+
+.navigation__link:last-child {
+  margin-right: 0;
+}
+
+.navigation__account {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__img {
+  width: 12px;
+  height: 12px;
+  padding: 9px;
+  object-fit: cover;
+  background: #313131;
+  border: 0;
+  border-radius: 6px;
+}
+
+.navigation__buttons {
+  margin: 21px 70px 21px 0;
+}
+
+.navigation__button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  background: transparent;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.navigation__button:hover {
+  opacity: 0.5;
+}
+
+.navigation__button-reg {
+  margin-right: 30px;
+}
+
+.navigation__button-log {
+  width: 76px;
+  height: 32px;
+  background: #3ddc84;
+  color: #000;
+  border-radius: 3px;
+}
+
+.navigation__burger-menu {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation__buttons {
+    margin-right: 30px;
+  }
+
+  .navigation__links,
+  .navigation__account {
+    display: none;
+    margin: 0;
+  }
+
+  .navigation__burger-menu {
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin: 15px 30px 15px 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .navigation__burger-menu:hover {
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .navigation__buttons {
+    margin-right: 14px;
+  }
+
+  .navigation__button-log {
+    width: 54px;
+    height: 26px;
+  }
+
+  .navigation__button-reg {
+    margin-right: 14px;
+  }
+
+  .navigation__burger-menu {
+    margin-right: 14px;
+  }
+}

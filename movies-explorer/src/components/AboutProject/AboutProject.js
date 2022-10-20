@@ -29,6 +29,7 @@ function AboutProject() {
           <h2 className='time__title time__title_color_green'>1 неделя</h2>
           <p className='time__text'>Back-end</p>
         </div>
+
         <div className='time__frontend'>
           <h2 className='time__title time__title_color_grey'>4 недели</h2>
           <p className='time__text'>Front-end</p>

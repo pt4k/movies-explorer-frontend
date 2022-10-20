@@ -9,7 +9,7 @@ function SearchForm() {
         <img className='searchForm__img' src={loupe} alt='Лупа' />
         <input
           className='searchForm__input'
-          placeholder='Фильмы'
+          placeholder='Фильм'
           name='search'
           required
         />

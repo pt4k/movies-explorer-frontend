@@ -4,7 +4,7 @@ import './Promo.css';
 function Promo() {
   return (
     <section className='promo'>
-      <div>
+      <div className='promo__wrap'>
         <h1 className='promo__tittle'>
           Учебный проект студента факультета Веб-разработки.
         </h1>

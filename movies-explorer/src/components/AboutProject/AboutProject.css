@@ -28,12 +28,14 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
+  margin: 0 0 28px;
 }
 
 .columns__text {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
+  margin: 0;
 }
 
 .time {
@@ -43,6 +45,7 @@
 .time__backend {
   flex-basis: 228px;
 }
+
 .time__frontend {
   flex-grow: 1;
 }
@@ -52,6 +55,7 @@
   font-size: 14px;
   line-height: 1.2;
   text-align: center;
+  vertical-align: middle;
   margin: 0;
 }
 
@@ -71,4 +75,71 @@
   text-align: center;
   color: #8b8b8b;
   margin: 14px 0 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .aboutProject {
+    padding: 90px 50px;
+  }
+
+  .two-columns {
+    padding-bottom: 93px;
+  }
+
+  .columns {
+    width: 319px;
+  }
+
+  .columns__title {
+    margin-bottom: 22px;
+  }
+
+  .columns__text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .time__backend {
+    flex-basis: 140px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .aboutProject {
+    padding: 70px 18px;
+  }
+
+  .aboutProject__header {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .two-columns {
+    display: flex;
+    flex-direction: column;
+    width: 284px;
+  }
+
+  .columns {
+    width: 284px;
+  }
+
+  .columns__title {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 56px 0 16px;
+  }
+
+  .columns__text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .time__backend {
+    flex-basis: 100px;
+  }
+
+  .time__text {
+    margin-top: 10px;
+  }
 }

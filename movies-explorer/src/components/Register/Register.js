@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
+import logo from '../../images/logo.svg';
 import './Register.css';
 
 function Register() {
   return (
     <section className='register'>
+      <Link to='/' className='register__logo'>
+        <img src={logo} alt='Логотип' />
+      </Link>
       <h2 className='register__title'>Добро пожаловать!</h2>
       <form className='register__form'>
         <label className='register__label'>Имя</label>
@@ -19,7 +24,10 @@ function Register() {
         </button>
       </form>
       <p className='register__text'>
-        Уже зарегистрированы? <a className='register__link'>Войти</a>
+        Уже зарегистрированы?{' '}
+        <Link to='/signin' className='register__link'>
+          Войти
+        </Link>
       </p>
     </section>
   );

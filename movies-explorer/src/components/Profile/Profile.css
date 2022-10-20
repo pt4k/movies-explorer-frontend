@@ -39,6 +39,10 @@
   outline: none;
 }
 
+.profile__input:focus {
+  outline: thin outset #fff;
+}
+
 .profile__line {
   border-bottom: 1px solid #424242;
   margin: 16px 0;
@@ -67,4 +71,10 @@
 
 .profile__button-exit {
   color: #ee3465;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__title {
+    margin: 236px 0 96px;
+  }
 }

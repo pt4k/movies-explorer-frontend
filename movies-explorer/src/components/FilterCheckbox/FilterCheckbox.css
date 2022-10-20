@@ -43,3 +43,9 @@
 .filterCheckbox__radio_invisible:disabled + .filterCheckbox__radio_visible {
   background: #343434;
 }
+
+@media screen and (max-width: 540px) {
+  .filterCheckbox__label-film {
+    margin: 46px 0 45px 13px;
+  }
+}

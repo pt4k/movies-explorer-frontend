@@ -56,3 +56,23 @@
   color: #8b8b8b;
   margin: 0;
 }
+
+@media screen and (max-width: 1023px) {
+  .element {
+    width: 339px;
+  }
+
+  .element__img {
+    width: 339px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .element {
+    width: 300px;
+  }
+
+  .element__img {
+    width: 300px;
+  }
+}

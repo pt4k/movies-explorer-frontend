@@ -7,15 +7,33 @@ function Portfolio() {
       <h2 className='portfolio__title'>Портфолио</h2>
       <ul className='portfolio__list'>
         <li className='portfolio__item'>
-          Статичный сайт{' '}
+          <a
+            className='portfolio__link'
+            href='https://pt4k.github.io/russian-travel/'
+            target='_blank'
+          >
+            Статичный сайт
+          </a>{' '}
           <img className='portfolio__img' alt='ссылка' src={link} />
         </li>
         <li className='portfolio__item'>
-          Адаптивный сайт{' '}
+          <a
+            className='portfolio__link'
+            href='https://pt4k.github.io/mesto-react/'
+            target='_blank'
+          >
+            Адаптивный сайт
+          </a>{' '}
           <img className='portfolio__img' alt='ссылка' src={link} />
         </li>
         <li className='portfolio__item'>
-          Одностраничное приложение{' '}
+          <a
+            className='portfolio__link'
+            href='https://pt4k.github.io/signin'
+            target='_blank'
+          >
+            Одностраничное приложение
+          </a>{' '}
           <img className='portfolio__img' alt='ссылка' src={link} />
         </li>
       </ul>

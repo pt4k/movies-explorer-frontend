@@ -1,0 +1,51 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.notFoundPage__title {
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 246px 0 5px;
+}
+
+.notFoundPage__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0 0 184px;
+}
+
+.notFoundPage__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: #4285f4;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .notFoundPage__title {
+    margin-top: 408px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .notFoundPage__title {
+    margin: 329px 0 10px;
+    font-size: 80px;
+  }
+
+  .notFoundPage__text {
+    font-size: 12px;
+    margin-bottom: 284px;
+  }
+
+  .notFoundPage__link {
+    font-size: 12px;
+  }
+}
