@@ -11,7 +11,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  opacity: 0;
+  visibility: hidden;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
