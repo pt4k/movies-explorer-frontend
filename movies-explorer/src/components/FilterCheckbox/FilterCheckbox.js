@@ -4,7 +4,7 @@ function FilterCheckbox() {
   return (
     <div className='filterCheckbox__wrap'>
       <div className='filterCheckbox__radios'>
-        <label>
+        <label className='filterCheckbox__label'>
           <input
             className='filterCheckbox__radio_invisible'
             type='radio'
@@ -14,7 +14,7 @@ function FilterCheckbox() {
           />
           <span class='filterCheckbox__radio_visible'></span>
         </label>
-        <label>
+        <label className='filterCheckbox__label'>
           <input
             className='filterCheckbox__radio_invisible'
             type='radio'

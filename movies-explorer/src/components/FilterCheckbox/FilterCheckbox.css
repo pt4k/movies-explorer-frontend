@@ -11,6 +11,14 @@
   border-radius: 20px;
 }
 
+.filterCheckbox__label {
+  margin-right: 4px;
+}
+
+.filterCheckbox__label:last-child {
+  margin-right: 0;
+}
+
 .filterCheckbox__label-film {
   font-weight: 400;
   font-size: 13px;

@@ -5,11 +5,18 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1140px) {
   .movies {
     grid: repeat(4, 280px) / repeat(2, 339px);
     gap: 30px;
     padding-top: 70px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies {
+    grid: repeat(4, 280px) / repeat(2, 300px);
+    gap: 38px 10px;
   }
 }
 

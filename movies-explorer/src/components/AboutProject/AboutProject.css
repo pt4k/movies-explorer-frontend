@@ -51,12 +51,16 @@
 }
 
 .time__title {
+  height: 36px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
   text-align: center;
   vertical-align: middle;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time__title_color_green {

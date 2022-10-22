@@ -15,35 +15,37 @@
   margin: 0;
 }
 
-.portfolio__item {
+.portfolio__link {
   display: flex;
   justify-content: space-between;
   padding: 19px 0;
+
   border-bottom: 1px solid #424242;
   transition: opacity 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
   border-bottom: 1px solid #fff;
 }
 
-.portfolio__item:hover {
+.portfolio__link:hover {
   opacity: 0.5;
 }
 
-.portfolio__item:first-child {
+.portfolio__link:first-child {
   padding-top: 0;
 }
 
-.portfolio__item:last-child {
+.portfolio__link:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
 
-.portfolio__link {
+.portfolio__paragraph {
   font-weight: 400;
   font-size: 30px;
   line-height: 1.66;
-  text-decoration: none;
   color: #fff;
+  margin: 0;
 }
 
 .portfolio__img {
