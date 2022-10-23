@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 1;
   visibility: hidden;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
@@ -22,8 +22,11 @@
   transition-delay: 0s;
 }
 
-.burgerMenu {
+.popup__window {
   width: 520px;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-color: #202020;
   display: flex;
   flex-direction: column;
@@ -31,7 +34,7 @@
   position: absolute;
 }
 
-.burgerMenu__close {
+.popup__close {
   position: absolute;
   top: 23px;
   right: 23px;
@@ -39,18 +42,18 @@
   transition: opacity 0.3s ease;
 }
 
-.burgerMenu__close:hover {
+.popup__close:hover {
   opacity: 0.5;
 }
 
-.burgerMenu__links {
+.popup__links {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-.burgerMenu__link {
+.popup__link {
   text-decoration: none;
   font-weight: 500;
   font-size: 18px;
@@ -63,24 +66,23 @@
   border-bottom: 2px solid transparent;
 }
 
-.burgerMenu__link:hover {
+.popup__link:hover {
   opacity: 0.5;
   border-bottom: 2px solid #fff;
 }
 
-.burgerMenu__link:first-child {
+.popup__link:first-child {
   margin-top: 159px;
 }
 
-.burgerMenu__link:last-child {
-  margin-bottom: 0;
-}
-
-.burgerMenu__account {
+.popup__account {
+  display: flex;
+  justify-content: center;
   padding-bottom: 92px;
 }
 
-.burgerMenu__img {
+.popup__img {
+  margin-top: 157px;
   width: 12px;
   height: 12px;
   padding: 9px;
@@ -92,18 +94,19 @@
 }
 
 @media screen and (max-width: 540px) {
-  .burgerMenu {
+  .popup__window {
     width: 320px;
-    top: 0;
-    bottom: 0;
-    right: 0;
   }
 
-  .burgerMenu__link:first-child {
+  .popup__link:first-child {
     margin-top: 144px;
   }
 
-  .burgerMenu__account {
+  .popup__img {
+    margin-top: 142px;
+  }
+
+  .popup__account {
     padding-bottom: 48px;
   }
 }

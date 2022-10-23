@@ -6,24 +6,24 @@ import './BurgerMenuPopup.css';
 function BurgerMenuPopup({ isOpen }) {
   return (
     <section className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-      <div className='burgerMenu'>
-        <img className='burgerMenu__close' alt='Кнопка закрыть' src={close} />
-        <div className='burgerMenu__links'>
-          <Link to='/' className='burgerMenu__link'>
+      <div className='popup__window'>
+        <img className='popup__close' alt='Кнопка закрыть' src={close} />
+        <div className='popup__links'>
+          <Link to='/' className='popup__link'>
             Главная
           </Link>{' '}
-          <Link to='/movies' className='burgerMenu__link'>
+          <Link to='/movies' className='popup__link'>
             Фильмы
           </Link>{' '}
-          <Link to='/saved-movies' className='burgerMenu__link'>
+          <Link to='/saved-movies' className='popup__link'>
             Сохранённые фильмы
           </Link>
         </div>
-        <div className='burgerMenu__account'>
-          <Link to='/profile' className='burgerMenu__link'>
+        <div className='popup__account'>
+          <Link to='/profile' className='popup__link'>
             Аккаунт
           </Link>{' '}
-          <img className='burgerMenu__img' src={acc} alt='Аккаунт' />
+          <img className='popup__img' src={acc} alt='Аккаунт' />
         </div>
       </div>
     </section>

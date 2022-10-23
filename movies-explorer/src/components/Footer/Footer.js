@@ -11,8 +11,15 @@ function Footer() {
       <div className='footer__info'>
         <p className='footer__data'>© {new Date().getFullYear()}</p>
         <div className='footer__links'>
-          <Link className='footer__link'>Яндекс.Практикум</Link>
-          <Link className='footer__link'>Github</Link>
+          <Link
+            to='https://practicum.yandex.ru/profile/web/'
+            className='footer__link'
+          >
+            Яндекс.Практикум
+          </Link>
+          <Link to='https://github.com/pt4k' className='footer__link'>
+            Github
+          </Link>
         </div>
       </div>
     </footer>

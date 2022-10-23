@@ -5,18 +5,18 @@
 
 .filterCheckbox__radios {
   display: flex;
-  width: 36px;
+  width: 40px;
   justify-content: space-between;
   background: #343434;
   border-radius: 20px;
 }
 
 .filterCheckbox__label {
-  margin-right: 4px;
+  margin: 2px 1px 2px 2px;
 }
 
 .filterCheckbox__label:last-child {
-  margin-right: 0;
+  margin: 2px 2px 2px 1px;
 }
 
 .filterCheckbox__label-film {

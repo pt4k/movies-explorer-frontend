@@ -87,6 +87,7 @@
 @media screen and (max-width: 767px) {
   .techs__list {
     width: 448px;
+    margin: 0 auto;
   }
 }
 

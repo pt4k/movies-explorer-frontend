@@ -12,7 +12,7 @@ function FilterCheckbox() {
             id='no'
             value='no'
           />
-          <span class='filterCheckbox__radio_visible'></span>
+          <span className='filterCheckbox__radio_visible'></span>
         </label>
         <label className='filterCheckbox__label'>
           <input
@@ -23,12 +23,10 @@ function FilterCheckbox() {
             value='yes'
             checked
           />
-          <span class='filterCheckbox__radio_visible'></span>
+          <span className='filterCheckbox__radio_visible'></span>
         </label>
       </div>
-      <label className='filterCheckbox__label-film' for='yes'>
-        Короткометражки
-      </label>
+      <label className='filterCheckbox__label-film'>Короткометражки</label>
     </div>
   );
 }

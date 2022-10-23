@@ -87,6 +87,14 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .promo__tittle {
+    font-size: 29px;
+    line-height: 1.26;
+    width: 500px;
+  }
+}
+
 @media screen and (max-width: 540px) {
   .promo {
     padding: 0 30px 30px;
@@ -98,8 +106,6 @@
   }
 
   .promo__tittle {
-    font-size: 29px;
-    line-height: 1.26;
     width: 300px;
   }
 

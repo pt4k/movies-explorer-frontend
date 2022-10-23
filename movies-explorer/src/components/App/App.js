@@ -10,11 +10,28 @@ import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
+import mainApi from '../../utils/MainApi';
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  //получаем фильмы с стороннего сервера
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi
+        .getMovies()
+        .then((res) => {
+          setMovies(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
 
   return (
     <div className='page'>

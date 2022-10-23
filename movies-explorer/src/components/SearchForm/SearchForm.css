@@ -1,5 +1,5 @@
 .searchForm {
-  margin: 70px 70px 10px;
+  padding-bottom: 10px;
   box-sizing: border-box;
   border-bottom: 1px solid #424242;
 }
@@ -10,7 +10,7 @@
   align-items: center;
   background: #222;
   border-radius: 9px;
-  margin: 0 0 69px;
+  margin: 70px 70px 69px;
 }
 
 .searchForm__img {
@@ -74,7 +74,7 @@
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 767px) {
   .searchForm {
     margin: 80px 10px 50px;
   }
@@ -88,7 +88,9 @@
   }
 
   .searchForm__input {
+    align-self: start;
     width: 300px;
+    border-radius: 9px;
     height: 72px;
     padding-left: 19px;
     background: #222;
