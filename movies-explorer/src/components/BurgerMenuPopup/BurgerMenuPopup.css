@@ -40,6 +40,7 @@
   right: 23px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .popup__close:hover {

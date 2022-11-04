@@ -1,25 +1,25 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-function MoviesCardList() {
+function MoviesCardList({ isSave }) {
   return (
     <section className='movies'>
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
+      <MoviesCard isSave={isSave} />
     </section>
   );
 }

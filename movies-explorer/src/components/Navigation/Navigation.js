@@ -41,7 +41,6 @@ function Navigation({ loggedIn }) {
           </Link>
         </div>
       )}
-      <BurgerMenuPopup />
     </section>
   );
 }

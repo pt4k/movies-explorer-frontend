@@ -49,6 +49,22 @@
   background-image: url(../../images/like_active.svg);
 }
 
+.element__like_delete {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 0;
+  background: #313131 url(../../images/delete.svg) no-repeat center;
+  border-radius: 36px;
+  cursor: pointer;
+  transition: background-image 0.3s ease, opacity 0.3s ease;
+  z-index: 1;
+}
+
+.element__like_delete:hover {
+  opacity: 0.5;
+}
+
 .element__time {
   font-weight: 400;
   font-size: 11px;

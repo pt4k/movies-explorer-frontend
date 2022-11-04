@@ -15,7 +15,7 @@
   margin: 0;
 }
 
-.portfolio__link {
+.portfolio__item {
   display: flex;
   justify-content: space-between;
   padding: 19px 0;
@@ -27,15 +27,15 @@
   border-bottom: 1px solid #fff;
 }
 
-.portfolio__link:hover {
+.portfolio__item:hover {
   opacity: 0.5;
 }
 
-.portfolio__link:first-child {
+.portfolio__item:first-child {
   padding-top: 0;
 }
 
-.portfolio__link:last-child {
+.portfolio__item:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }

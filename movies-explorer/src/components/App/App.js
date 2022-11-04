@@ -18,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [isSave, setIsSave] = useState(false);
 
   //получаем фильмы с стороннего сервера
   useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
 
         <Route path='/saved-movies'>
           <Header loggedIn={true} />
-          <SavedMovies />
+          <SavedMovies isSave={true} />
           <Footer />
         </Route>
 

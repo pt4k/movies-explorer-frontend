@@ -73,11 +73,6 @@
     margin: 22px 0 83px;
   }
 
-  .techs__list {
-    width: 648px;
-    margin: 0 10px;
-  }
-
   .techs__item {
     font-size: 12px;
     line-height: 1.25;
@@ -85,9 +80,8 @@
 }
 
 @media screen and (max-width: 767px) {
-  .techs__list {
-    width: 448px;
-    margin: 0 auto;
+  .techs__item {
+    margin-right: 5px;
   }
 }
 

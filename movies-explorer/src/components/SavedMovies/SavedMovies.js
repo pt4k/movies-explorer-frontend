@@ -2,14 +2,14 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './SavedMovies.css';
 
-function SavedMovies() {
+function SavedMovies({ isSave }) {
   return (
     <main className='content'>
       <section>
         <SearchForm />
       </section>
       <section>
-        <MoviesCardList />
+        <MoviesCardList isSave={true} />
       </section>
     </main>
   );

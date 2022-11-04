@@ -9,14 +9,7 @@
   justify-content: space-between;
   background: #343434;
   border-radius: 20px;
-}
-
-.filterCheckbox__label {
-  margin: 2px 1px 2px 2px;
-}
-
-.filterCheckbox__label:last-child {
-  margin: 2px 2px 2px 1px;
+  padding: 2px 3px;
 }
 
 .filterCheckbox__label-film {
