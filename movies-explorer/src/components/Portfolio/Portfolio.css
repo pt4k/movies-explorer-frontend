@@ -19,7 +19,6 @@
   display: flex;
   justify-content: space-between;
   padding: 19px 0;
-
   border-bottom: 1px solid #424242;
   transition: opacity 0.3s ease;
   cursor: pointer;
@@ -38,6 +37,13 @@
 .portfolio__item:last-child {
   padding-bottom: 0;
   border-bottom: 0;
+}
+
+.portfolio__link {
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .portfolio__paragraph {
