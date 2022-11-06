@@ -1,0 +1,149 @@
+.aboutProject {
+  font-family: 'Inter';
+  padding: 110px 70px;
+  background: #202020;
+  color: #ffffff;
+}
+
+.aboutProject__header {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #686868;
+}
+
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 110px;
+}
+
+.columns {
+  width: 550px;
+}
+
+.columns__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+
+.columns__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.time {
+  display: flex;
+}
+
+.time__backend {
+  flex-basis: 228px;
+}
+
+.time__frontend {
+  flex-grow: 1;
+}
+
+.time__title {
+  height: 36px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time__title_color_green {
+  background: #3ddc84;
+  color: #000;
+}
+
+.time__title_color_grey {
+  background: #303030;
+}
+
+.time__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: #8b8b8b;
+  margin: 14px 0 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .aboutProject {
+    padding: 90px 50px;
+  }
+
+  .two-columns {
+    padding-bottom: 93px;
+  }
+
+  .columns {
+    width: 319px;
+  }
+
+  .columns__title {
+    margin-bottom: 22px;
+  }
+
+  .columns__text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .time__backend {
+    flex-basis: 140px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .aboutProject {
+    padding: 70px 18px;
+  }
+
+  .aboutProject__header {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .two-columns {
+    display: flex;
+    flex-direction: column;
+    width: 284px;
+  }
+
+  .columns {
+    width: 284px;
+  }
+
+  .columns__title {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 56px 0 16px;
+  }
+
+  .columns__text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .time__backend {
+    flex-basis: 100px;
+  }
+
+  .time__text {
+    margin-top: 10px;
+  }
+}

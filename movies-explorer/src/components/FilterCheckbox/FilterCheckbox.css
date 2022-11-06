@@ -1,0 +1,52 @@
+.filterCheckbox__wrap {
+  display: flex;
+  align-items: center;
+}
+
+.filterCheckbox__radios {
+  display: flex;
+  width: 40px;
+  justify-content: space-between;
+  background: #343434;
+  border-radius: 20px;
+  padding: 2px 3px;
+}
+
+.filterCheckbox__label-film {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
+  margin: 27px 30px 27px 14px;
+}
+
+.filterCheckbox__radio_invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.filterCheckbox__radio_visible {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 20px;
+  border-radius: 20px;
+}
+
+.filterCheckbox__radio_invisible:checked + .filterCheckbox__radio_visible {
+  background: #2be080;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+}
+
+.filterCheckbox__radio_invisible:disabled + .filterCheckbox__radio_visible {
+  background: #343434;
+}
+
+@media screen and (max-width: 540px) {
+  .filterCheckbox__label-film {
+    margin: 46px 0 45px 13px;
+  }
+}

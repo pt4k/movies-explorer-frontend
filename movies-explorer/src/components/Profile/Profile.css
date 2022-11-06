@@ -1,0 +1,80 @@
+.profile {
+  padding-bottom: 70px;
+}
+
+.profile__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  margin: 74px 0 123px;
+}
+
+.profile__form {
+  font-family: inherit;
+  margin: 0 auto;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile__input-wrap {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.18;
+}
+
+.profile__input {
+  width: 380px;
+  height: 15px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  text-align: right;
+  outline: none;
+}
+
+.profile__input:focus {
+  outline: thin outset #fff;
+}
+
+.profile__line {
+  border-bottom: 1px solid #424242;
+  margin: 16px 0;
+}
+
+.profile__button {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  height: 17px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.profile__button:hover {
+  opacity: 0.5;
+}
+
+.profile__button-edit {
+  margin: 220px 0 16px;
+}
+
+.profile__button-exit {
+  color: #ee3465;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__title {
+    margin: 236px 0 96px;
+  }
+}

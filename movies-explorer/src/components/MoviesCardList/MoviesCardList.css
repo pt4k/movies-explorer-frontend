@@ -1,0 +1,22 @@
+.movies {
+  display: grid;
+  grid: repeat(4, 242px) / repeat(4, 270px);
+  gap: 38px 20px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1140px) {
+  .movies {
+    grid: repeat(4, 280px) / repeat(2, 339px);
+    gap: 30px;
+    padding-top: 70px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies {
+    grid: repeat(5, 260px) / repeat(1, 300px);
+    gap: 34px;
+    padding-top: 0;
+  }
+}
