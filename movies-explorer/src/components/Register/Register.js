@@ -9,12 +9,12 @@ function Register() {
         <img src={logo} alt='Логотип' />
       </Link>
       <h2 className='register__title'>Добро пожаловать!</h2>
-      <form className='register__form'>
+      <form className='register__form' novalidate>
         <label className='register__label'>Имя</label>
         <input className='register__input' />
 
         <label className='register__label'>E-mail</label>
-        <input className='register__input' />
+        <input className='register__input' type='email' />
 
         <label className='register__label'>Пароль</label>
         <input className='register__input' type='password' />

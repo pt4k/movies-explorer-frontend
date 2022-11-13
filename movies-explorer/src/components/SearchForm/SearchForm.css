@@ -18,6 +18,16 @@
   margin: 19px 0 19px 19px;
 }
 
+.searchForm__field {
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #ee3465;
+  position: relative;
+}
+
 .searchForm__input {
   width: 700px;
   height: 34px;
@@ -26,6 +36,12 @@
   border: 0;
   padding: 0;
   margin: 0 0 0 10px;
+}
+
+.searchForm__input-error {
+  position: absolute;
+  left: 10px;
+  bottom: -15px;
 }
 
 .searchForm__input:focus {
