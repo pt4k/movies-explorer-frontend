@@ -20,14 +20,10 @@ class MainApi {
       },
       credentials: 'include',
       body: JSON.stringify({ name, email, password }),
-    })
-      .then((res) => {
-        return res.json;
-      })
-      .catch((err) => console.log(err));
+    }).then(this._handleResponse);
   };
 
-  authorize = (name, email, password) => {
+  authorize = (email, password) => {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
       headers: {
@@ -68,7 +64,7 @@ class MainApi {
         name: name,
         email: email,
       }),
-    }).then(this._checkResponse);
+    }).then(this._handleResponse);
   }
 
   getSaveMovies() {
@@ -78,9 +74,7 @@ class MainApi {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-    })
-      .then(this._handleResponse)
-      .then((data) => data);
+    }).then(this._handleResponse);
   }
 
   saveMovie(movie) {
@@ -121,7 +115,9 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: 'https://api.movies.pishchenko.nomoredomains.icu',
+  url: 'http://localhost:3005',
 });
 
 export default mainApi;
+
+//'https://api.movies.pishchenko.nomoredomains.icu'

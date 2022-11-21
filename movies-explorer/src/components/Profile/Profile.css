@@ -22,7 +22,8 @@
 
 .profile__input-wrap {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
   font-weight: 500;
   font-size: 11px;
   line-height: 1.18;
@@ -37,10 +38,18 @@
   color: #fff;
   text-align: right;
   outline: none;
+  margin: 0 0 10px;
 }
 
 .profile__input:focus {
   outline: thin outset #fff;
+}
+
+.profile__input-error {
+  color: #ee3465;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
 }
 
 .profile__line {

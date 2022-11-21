@@ -3,13 +3,13 @@ import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 import './Header.css';
 
-function Header({ loggedIn }) {
+function Header({ isLoggedIn }) {
   return (
-    <header className={loggedIn ? 'header__onLog' : 'header'}>
+    <header className={isLoggedIn ? 'header__onLog' : 'header'}>
       <Link to='/'>
         <img alt='Логотип' className='logo' src={logo} />
       </Link>
-      <Navigation loggedIn={loggedIn} />
+      <Navigation isLoggedIn={isLoggedIn} />
     </header>
   );
 }

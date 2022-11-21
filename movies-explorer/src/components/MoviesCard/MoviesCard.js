@@ -1,25 +1,66 @@
-import { useState } from 'react';
 import './MoviesCard.css';
 
-function MoviesCard({ isSave, movie }) {
+function MoviesCard({
+  movie,
+  movieId,
+  nameRU,
+  nameEN,
+  director,
+  country,
+  year,
+  duration,
+  description,
+  trailerLink,
+  imgLink,
+  imgAlt,
+  image,
+  isSave,
+  isSavePageTemplate,
+  handleSaveMovie,
+  handleDeleteMovie,
+  handleRemoveSavedMovie,
+}) {
+  const movieServerUrl = 'https://api.nomoreparties.co';
+
+  function handleSaveButton() {
+    if (isSave === false) {
+      handleSaveMovie({
+        movieId,
+        nameRU,
+        nameEN,
+        director,
+        country,
+        year,
+        duration,
+        description,
+        trailerLink,
+        image: movieServerUrl + image.url,
+        thumbnail: movieServerUrl + image.url,
+      });
+    } else {
+      handleRemoveSavedMovie(movie.id);
+    }
+  }
+
+  function handleDeleteButton() {
+    handleDeleteMovie(movie);
+  }
+
   return (
     <figure className='element'>
-      <a href={movie.trailerLink} target='blank'>
-        <img
-          src={`https://api.nomoreparties.co${movie.image.url}`}
-          alt='Постер фильма'
-          className='element__img'
-        />
+      <a href={trailerLink} target='_blank'>
+        <img src={imgLink} alt={imgAlt} className='element__img' />
       </a>
       <figcaption className='element__caption'>
-        <h2 className='element__text'>{movie.nameRU}</h2>
+        <h2 className='element__text'>{nameRU}</h2>
         <button
           className={`${isSave ? 'element__like_delete ' : 'element__like'}`}
           type='button'
           aria-label='like'
+          onClick={isSavePageTemplate ? handleSaveButton : handleDeleteButton}
         ></button>
       </figcaption>
-      <p className='element__time'>{movie.duration} минут</p>
+      <p className='element__time'>{duration} минут</p>
     </figure>
   );
 }
