@@ -4,10 +4,10 @@ import burger_menu from '../../images/burger_menu.svg';
 import './Navigation.css';
 import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 
-function Navigation({ loggedIn }) {
+function Navigation({ isLoggedIn }) {
   return (
     <section className='navigation'>
-      {loggedIn ? (
+      {isLoggedIn ? (
         <div className='navigation__onLog'>
           <div className='navigation__links'>
             <Link to='/movies' className='navigation__link'>

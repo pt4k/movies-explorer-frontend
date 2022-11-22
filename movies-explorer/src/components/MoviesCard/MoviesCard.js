@@ -21,8 +21,9 @@ function MoviesCard({
   handleRemoveSavedMovie,
 }) {
   const movieServerUrl = 'https://api.nomoreparties.co';
+  console.log(isSave);
 
-  function handleSaveButton() {
+  function handleLikeButton() {
     if (isSave === false) {
       handleSaveMovie({
         movieId,
@@ -42,7 +43,7 @@ function MoviesCard({
     }
   }
 
-  function handleDeleteButton() {
+  function handleDeleteLike() {
     handleDeleteMovie(movie);
   }
 
@@ -57,7 +58,7 @@ function MoviesCard({
           className={`${isSave ? 'element__like_delete ' : 'element__like'}`}
           type='button'
           aria-label='like'
-          onClick={isSavePageTemplate ? handleSaveButton : handleDeleteButton}
+          onClick={isSavePageTemplate ? handleDeleteLike : handleLikeButton}
         ></button>
       </figcaption>
       <p className='element__time'>{duration} минут</p>

@@ -8,15 +8,14 @@ const SearchForm = ({
   isShort,
   inputValue,
   setInputValue,
-  savedPageLocalStorage,
 }) => {
-  function handleSubmitForm(event) {
-    event.preventDefault();
+  function handleSubmitForm(evt) {
+    evt.preventDefault();
     setSearchQuery(inputValue);
   }
 
-  function handleSearchInput(event) {
-    setInputValue(event.target.value);
+  function handleSearchInput(evt) {
+    setInputValue(evt.target.value);
   }
 
   return (

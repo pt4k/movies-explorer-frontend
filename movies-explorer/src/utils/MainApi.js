@@ -78,6 +78,7 @@ class MainApi {
   }
 
   saveMovie(movie) {
+    console.log(movie);
     return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: {
@@ -115,9 +116,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: 'http://localhost:3005',
+  url: 'https://api.movies.pishchenko.nomoredomains.icu',
 });
 
 export default mainApi;
-
-//'https://api.movies.pishchenko.nomoredomains.icu'

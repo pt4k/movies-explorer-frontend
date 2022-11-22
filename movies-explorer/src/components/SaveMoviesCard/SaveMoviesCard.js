@@ -35,10 +35,10 @@ const SavedMovies = ({
         setIsShort={setIsShort}
         inputValue={inputValue}
         setInputValue={setInputValue}
-        savedPageLocalStorage={true}
+        // savedPageLocalStorage={true}
       />
       <MoviesCardList
-        isSavePageTemplate={true}
+        handleDeleteMovie={handleDeleteMovie}
         savedMovies={savedMovies}
         isShort={isShort}
         searchQuery={searchQuery}
@@ -46,7 +46,7 @@ const SavedMovies = ({
         setIsLoading={setIsLoading}
         filteredMovies={filteredMovies}
         searchMovies={searchMovies}
-        handleDeleteMovie={handleDeleteMovie}
+        isSavePageTemplate={true}
       />
     </section>
   );

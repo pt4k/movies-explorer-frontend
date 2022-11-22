@@ -24,7 +24,11 @@ const Register = ({ onRegister }) => {
         <img src={logo} alt='Логотип' />
       </Link>
       <h2 className='register__title'>Добро пожаловать!</h2>
-      <form className='register__form' onSubmit={handleFormSubmit} noValidate>
+      <form
+        className='register__form'
+        onSubmit={handleSubmit(handleFormSubmit)}
+        noValidate
+      >
         <label className='register__label'>
           Имя
           <input

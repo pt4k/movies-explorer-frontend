@@ -15,29 +15,29 @@ const MoviesCardList = ({
   isFirstSearch,
 }) => {
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
-  const [cardsAmount, setCardsAmount] = useState(5);
-  const [moreCardsAmount, setMoreCardsAmount] = useState(0);
+  const [cardsCount, setCardsCount] = useState(5);
+  const [moreCardsCount, setMoreCardsCount] = useState(0);
 
   const movieServerUrl = 'https://api.nomoreparties.co';
 
-  const checkCardsAmount = () => {
+  const checkCardsCount = () => {
     if (windowInnerWidth >= 1920) {
-      setCardsAmount(15);
-      setMoreCardsAmount(5);
+      setCardsCount(15);
+      setMoreCardsCount(5);
     } else if (windowInnerWidth >= 1280) {
-      setCardsAmount(12);
-      setMoreCardsAmount(3);
+      setCardsCount(12);
+      setMoreCardsCount(3);
     } else if (windowInnerWidth >= 481) {
-      setCardsAmount(8);
-      setMoreCardsAmount(2);
+      setCardsCount(8);
+      setMoreCardsCount(2);
     } else if (windowInnerWidth <= 480) {
-      setCardsAmount(5);
-      setMoreCardsAmount(1);
+      setCardsCount(5);
+      setMoreCardsCount(1);
     }
   };
 
   useEffect(() => {
-    checkCardsAmount();
+    checkCardsCount();
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -48,19 +48,23 @@ const MoviesCardList = ({
   }
 
   function handleLoadMoreCards() {
-    checkCardsAmount();
-    setCardsAmount(cardsAmount + moreCardsAmount);
+    checkCardsCount();
+    setCardsCount(cardsCount + moreCardsCount);
   }
+
+  // console.log(isSavePageTemplate);
   return (
     <>
-      {/* Все фильмы */}
+      {
+        // Найденные фильмы
+      }
       {isSavePageTemplate === false && (
         <ul className='movies'>
           {isLoading && <Preloader />}
           {!isLoading && filteredMovies.length === 0 && !isFirstSearch && (
             <p>Ничего не найдено</p>
           )}
-          {filteredMovies.slice(0, cardsAmount).map((movie) => {
+          {filteredMovies.slice(0, cardsCount).map((movie) => {
             return (
               <MoviesCard
                 {...movie}
@@ -70,7 +74,7 @@ const MoviesCardList = ({
                 imgLink={movieServerUrl + movie.image.url}
                 imgAlt={movie.nameRU}
                 duration={movie.duration}
-                isSaved={savedMovies.some((i) => i.movieId === movie.id)}
+                isSave={savedMovies.some((i) => i.movieId === movie.id)}
                 isSavePageTemplate={isSavePageTemplate}
                 setSavedMovies={setSavedMovies}
                 handleSaveMovie={handleSaveMovie}
@@ -80,17 +84,21 @@ const MoviesCardList = ({
           })}
         </ul>
       )}
-      {isSavePageTemplate === false && filteredMovies.length > cardsAmount && (
-        <button
-          onClick={handleLoadMoreCards}
-          type='button'
-          className='content__button'
-        >
-          Еще
-        </button>
+      {isSavePageTemplate === false && filteredMovies.length > cardsCount && (
+        <div className='content__more'>
+          <button
+            onClick={handleLoadMoreCards}
+            type='button'
+            className='content__button'
+          >
+            Еще
+          </button>
+        </div>
       )}
 
-      {/* Сохраненные фильмы */}
+      {
+        // Сохраненные фильмы
+      }
       {isSavePageTemplate === true && (
         <ul className='movies'>
           {isLoading && <Preloader />}

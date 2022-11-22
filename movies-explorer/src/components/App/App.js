@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  useHistory,
+  Redirect,
+  useLocation,
+} from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import Header from '../Header/Header';
@@ -26,6 +32,7 @@ function App() {
   console.log(isLoggedIn);
 
   const { pathname } = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     checkToken();
@@ -87,7 +94,6 @@ function App() {
 
   function onLog({ email, password }) {
     setIsLoading(true);
-
     mainApi
       .authorize(email, password)
       .then((res) => {
@@ -100,12 +106,12 @@ function App() {
   }
 
   function handleLogOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('moviesSearchResults');
+    localStorage.clear();
 
     setIsLoggedIn(false);
     setUserData({});
     setSavedMovies([]);
+    history.push('/');
   }
 
   function getInitialMovies() {
@@ -169,14 +175,18 @@ function App() {
 
   //сохранить фильм
   function handleSaveMovie(movie) {
+    console.log(movie);
+    //console.log(savedMovies);
     mainApi
       .saveMovie(movie)
       .then((res) => {
-        const updatedSavedMovies = [
+        console.log(res);
+        /* const updatedSavedMovies = [
           ...savedMovies,
           { ...res, id: res.movieId },
-        ];
-        setSavedMovies(updatedSavedMovies);
+        ]; */
+
+        //setSavedMovies(res);
       })
       .catch((err) => console.log(err));
   }

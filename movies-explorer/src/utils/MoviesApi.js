@@ -29,5 +29,3 @@ const moviesApi = new MoviesApi({
 });
 
 export default moviesApi;
-
-// https://api.nomoreparties.co/beatfilm-movies

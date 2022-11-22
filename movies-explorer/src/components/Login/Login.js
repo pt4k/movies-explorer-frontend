@@ -24,7 +24,11 @@ function Login({ onLog }) {
         <img src={logo} alt='Логотип' />
       </Link>
       <h2 className='login__title'>Рады видеть!</h2>
-      <form className='login__form' onSubmit={handleFormSubmit} noValidate>
+      <form
+        className='login__form'
+        onSubmit={handleSubmit(handleFormSubmit)}
+        noValidate
+      >
         <label className='login__label'>
           E-mail
           <input
