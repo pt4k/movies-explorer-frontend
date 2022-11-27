@@ -21,7 +21,7 @@ import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import './App.css';
-let das;
+
 function App() {
   const [moviesArray, setMoviesArray] = useState([]); //массив фильмов
   const [savedMovies, setSavedMovies] = useState([]); //массив сохраненных фильмов
