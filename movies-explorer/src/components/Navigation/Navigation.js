@@ -4,7 +4,7 @@ import burger_menu from '../../images/burger_menu.svg';
 import './Navigation.css';
 import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 
-function Navigation({ isLoggedIn }) {
+function Navigation({ isLoggedIn, handleOpenPopup }) {
   return (
     <section className='navigation'>
       {isLoggedIn ? (
@@ -24,7 +24,7 @@ function Navigation({ isLoggedIn }) {
             <img className='navigation__img' src={acc} alt='Аккаунт' />
           </div>
           <div className='navigation__burger-menu'>
-            <img src={burger_menu} alt='Меню' />
+            <img src={burger_menu} alt='Меню' onClick={handleOpenPopup} />
           </div>
         </div>
       ) : (

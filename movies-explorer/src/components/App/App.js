@@ -29,6 +29,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({}); //данные пользователя
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { pathname } = useLocation();
   const history = useHistory();
@@ -155,6 +156,14 @@ function App() {
       });
   }
 
+  const handleOpenPopup = () => {
+    setIsOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsOpen(false);
+  };
+
   // поиск и фильтры
   function filterMoviesByDuration(moviesArr) {
     return moviesArr.filter((i) => i.duration < 40);
@@ -236,7 +245,9 @@ function App() {
         {(pathname === '/' ||
           pathname === '/movies' ||
           pathname === '/saved-movies' ||
-          pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
+          pathname === '/profile') && (
+          <Header isLoggedIn={isLoggedIn} handleOpenPopup={handleOpenPopup} />
+        )}
         <Switch>
           <Route exact path='/'>
             <Main />
@@ -300,9 +311,7 @@ function App() {
           pathname === '/movies' ||
           pathname === '/saved-movies') && <Footer />}
 
-        <BurgerMenuPopup
-        // isOpen={isOpenPopup}
-        />
+        <BurgerMenuPopup isOpen={isOpen} onClose={closePopup} />
       </div>
     </CurrentUserContext.Provider>
   );
