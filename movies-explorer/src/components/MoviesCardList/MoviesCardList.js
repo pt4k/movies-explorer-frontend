@@ -51,6 +51,7 @@ const MoviesCardList = ({
     checkCardsCount();
     setCardsCount(cardsCount + moreCardsCount);
   }
+  console.log(cardsCount);
 
   return (
     <>
@@ -64,7 +65,6 @@ const MoviesCardList = ({
             <p>Ничего не найдено</p>
           )}
           {filteredMovies.slice(0, cardsCount).map((movie) => {
-            // console.log(movie);
             return (
               <MoviesCard
                 {...movie}
