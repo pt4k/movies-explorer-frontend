@@ -40,7 +40,7 @@ function Profile({ handleEditUser, handleLogOut }) {
       <h2 className='profile__title'>Привет, {currentUser.name}!</h2>
       <form className='profile__form' action='POST' noValidate>
         <div className='profile__input-wrap'>
-          <label>
+          <label className='profile__label'>
             Имя
             <input
               className='profile__input'
@@ -62,7 +62,7 @@ function Profile({ handleEditUser, handleLogOut }) {
         <div className='profile__line'></div>
 
         <div className='profile__input-wrap'>
-          <label>
+          <label className='profile__label'>
             E-mail
             <input
               className='profile__input'

@@ -134,4 +134,8 @@
   .navigation__burger-menu {
     margin-right: 14px;
   }
+
+  .navigation__onLog {
+    margin-right: 0;
+  }
 }

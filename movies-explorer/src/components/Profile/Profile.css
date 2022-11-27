@@ -17,7 +17,6 @@
   width: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .profile__input-wrap {
@@ -29,8 +28,13 @@
   line-height: 1.18;
 }
 
+.profile__label {
+  display: flex;
+  justify-content: space-between;
+}
+
 .profile__input {
-  width: 380px;
+  width: 220px;
   height: 15px;
   padding: 0;
   background: transparent;
@@ -97,5 +101,11 @@
 @media screen and (max-width: 1023px) {
   .profile__title {
     margin: 236px 0 96px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .profile__form {
+    width: 320px;
   }
 }
