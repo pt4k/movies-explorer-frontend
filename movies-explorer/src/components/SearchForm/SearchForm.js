@@ -2,13 +2,14 @@ import loupe from '../../images/loupe.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-const SearchForm = ({
+function SearchForm({
+  isFirstSearch,
   setSearchQuery,
-  setIsShort,
   isShort,
+  setIsShort,
   inputValue,
   setInputValue,
-}) => {
+}) {
   function handleSubmitForm(evt) {
     evt.preventDefault();
     setSearchQuery(inputValue);
@@ -18,6 +19,7 @@ const SearchForm = ({
     setInputValue(evt.target.value);
   }
 
+  //  console.log(inputValue);
   return (
     <section className='searchForm'>
       <form className='searchForm__form' onSubmit={handleSubmitForm} noValidate>
@@ -31,7 +33,11 @@ const SearchForm = ({
             value={inputValue}
             required
           />
-          <span className='searchForm__input-error'></span>
+          {isFirstSearch && (
+            <span className='searchForm__input-error'>
+              Нужно ввести ключевое слово
+            </span>
+          )}
         </label>
         <button className='searchForm__button' type='submit'>
           Найти
@@ -41,6 +47,6 @@ const SearchForm = ({
       </form>
     </section>
   );
-};
+}
 
 export default SearchForm;

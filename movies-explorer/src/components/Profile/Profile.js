@@ -11,7 +11,7 @@ function Profile({ handleEditUser, handleLogOut }) {
     register,
     handleSubmit,
     watch,
-    formState: { errors, defaultValues, isSubmitted, isSubmitting },
+    formState: { errors, defaultValues, isSubmitted, isSubmitting, isValid },
   } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -81,11 +81,19 @@ function Profile({ handleEditUser, handleLogOut }) {
           )}
         </div>
         <button
-          className='profile__button profile__button-edit'
+          className={
+            isValid &&
+            defaultValues.name === name &&
+            defaultValues.email === email
+              ? 'profile__button_disabled'
+              : 'profile__button profile__button-edit'
+          }
           type='submit'
           onClick={handleSubmit(handleFormSubmit)}
           disabled={
-            defaultValues.name === name && defaultValues.email === email
+            isValid &&
+            defaultValues.name === name &&
+            defaultValues.email === email
           }
         >
           Редактировать

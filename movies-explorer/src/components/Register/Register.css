@@ -80,6 +80,20 @@
   transition: opacity 0.3s ease;
 }
 
+.register__button_disabled {
+  height: 45px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  background: #4285f4;
+  border-radius: 3px;
+  color: #fff;
+  margin: 69px 0 0;
+  border: 0;
+  padding: 0;
+  background: #8b8b8b;
+}
+
 .register__button:hover {
   opacity: 0.5;
 }

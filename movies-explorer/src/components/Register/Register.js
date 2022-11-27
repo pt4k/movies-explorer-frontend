@@ -9,7 +9,7 @@ const Register = ({ onRegister }) => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ mode: 'onChange' });
 
   const [name, email, password] = watch(['name', 'email', 'password']);
@@ -87,7 +87,13 @@ const Register = ({ onRegister }) => {
           )}
         </label>
 
-        <button className='register__button' type='submit'>
+        <button
+          className={`${
+            isValid ? 'register__button' : 'register__button_disabled'
+          }`}
+          type='submit'
+          disabled={!isValid}
+        >
           Зарегистрироваться
         </button>
       </form>

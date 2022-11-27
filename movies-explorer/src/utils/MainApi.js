@@ -31,16 +31,9 @@ class MainApi {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-    })
-      .then((res) => {
-        return this._handleResponse(res);
-      })
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem('jwt', data.token);
-          return data;
-        }
-      });
+    }).then((res) => {
+      return this._handleResponse(res);
+    });
   };
 
   getCurrentUser() {
@@ -78,45 +71,33 @@ class MainApi {
   }
 
   saveMovie(movie) {
-    console.log(movie);
+    // console.log(movie);
     return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        movieId: movie.id,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
-        director: movie.director,
-        country: movie.country,
-        year: movie.year,
-        duration: movie.duration,
-        description: movie.description,
-        trailerLink: movie.trailerLink,
-        image: movie.image.url,
-        thumbnail: movie.image.url,
-      }),
+      body: JSON.stringify(movie),
     }).then(this._handleResponse);
   }
 
-  deleteMovie(movie) {
-    return fetch(`${this._url}/movies/${movie._id}`, {
+  deleteMovie(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        movieId: movie._id,
-      }),
     }).then(this._handleResponse);
   }
 }
 
 const mainApi = new MainApi({
-  url: 'https://api.movies.pishchenko.nomoredomains.icu',
+  url: 'http://localhost:3005',
 });
 
 export default mainApi;
+
+// 'http://localhost:3005'
+// 'https://api.movies.pishchenko.nomoredomains.icu'

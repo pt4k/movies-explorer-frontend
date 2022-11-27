@@ -74,10 +74,23 @@
   border-radius: 3px;
   color: #fff;
   margin: 179px 0 0;
-  paddin: 0;
+  padding: 0;
   border: 0;
   cursor: pointer;
   transition: opacity 0.3s ease;
+}
+
+.login__button_disabled {
+  height: 45px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  background: #8b8b8b;
+  border-radius: 3px;
+  color: #fff;
+  margin: 179px 0 0;
+  padding: 0;
+  border: 0;
 }
 
 .login__button:hover {

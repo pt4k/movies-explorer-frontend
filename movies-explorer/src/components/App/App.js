@@ -24,29 +24,30 @@ import './App.css';
 
 function App() {
   const [moviesArray, setMoviesArray] = useState([]); //массив фильмов
-  const [userData, setUserData] = useState({}); //данные пользователя
-  const [savedMovies, setSavedMovies] = useState([]); //сохраненные фильмы
-  const [filteredMovies, setFilteredMovies] = useState([]); //оФИЛЬТРОВАННЫЕ фильмы
-  const [isLoading, setIsLoading] = useState(false);
+  const [savedMovies, setSavedMovies] = useState([]); //массив сохраненных фильмов
+  const [filteredMovies, setFilteredMovies] = useState([]); //массив отфильтрованных фильмов
+  const [currentUser, setCurrentUser] = useState({}); //данные пользователя
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  console.log(isLoggedIn);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { pathname } = useLocation();
   const history = useHistory();
 
+  // проверка токена
   useEffect(() => {
     checkToken();
   }, []);
 
+  // запрос сохраненных фильмов
   useEffect(() => {
     mainApi
       .getSaveMovies()
       .then((res) => {
-        const result = res.data.filter((i) => i.owner === userData._id);
-        setSavedMovies(result);
+        const saveMovie = res.data.filter((i) => i.owner === currentUser._id);
+        setSavedMovies(saveMovie);
       })
       .catch((err) => err);
-  }, [userData]);
+  }, [currentUser]);
 
   useEffect(() => {
     checkToken();
@@ -55,29 +56,14 @@ function App() {
       mainApi
         .getSaveMovies()
         .then((res) => {
-          const result = res.data.filter((i) => i.owner === userData._id);
-          setSavedMovies(result);
+          const saveMovie = res.data.filter((i) => i.owner === currentUser._id);
+          setSavedMovies(saveMovie);
         })
         .catch((err) => err);
     }
   }, [isLoggedIn]);
 
-  function checkToken() {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      mainApi
-        .getCurrentUser()
-        .then((res) => {
-          setIsLoggedIn(true);
-          setUserData(res);
-        })
-        .catch((err) => err);
-    } else {
-      handleLogOut();
-    }
-  }
-
+  // регистрация и авторизация
   function onRegister({ name, email, password }) {
     setIsLoading(true);
 
@@ -94,6 +80,7 @@ function App() {
 
   function onLog({ email, password }) {
     setIsLoading(true);
+
     mainApi
       .authorize(email, password)
       .then((res) => {
@@ -101,7 +88,9 @@ function App() {
         localStorage.setItem('token', res.token);
         setIsLoggedIn(true);
       })
-      .catch((err) => {})
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => setIsLoading(false));
   }
 
@@ -109,9 +98,25 @@ function App() {
     localStorage.clear();
 
     setIsLoggedIn(false);
-    setUserData({});
+    setCurrentUser({});
     setSavedMovies([]);
     history.push('/');
+  }
+
+  function checkToken() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      mainApi
+        .getCurrentUser()
+        .then((res) => {
+          setIsLoggedIn(true);
+          setCurrentUser(res);
+        })
+        .catch((err) => err);
+    } else {
+      handleLogOut();
+    }
   }
 
   function getInitialMovies() {
@@ -135,14 +140,15 @@ function App() {
     }
   }
 
+  // изменения данных пользователя
   function handleEditUser({ name, email }) {
     setIsLoading(true);
     mainApi
       .patchUser(name, email)
       .then((res) => {
-        setUserData(res.data);
+        setCurrentUser(res.data);
         setIsLoading(false);
-        console.log(userData);
+        console.log(currentUser);
       })
       .catch((err) => {
         console.log(err);
@@ -155,7 +161,11 @@ function App() {
   }
 
   function searchMovies(moviesArr, searchQuery, isShortMovie, renderAll) {
+    setIsLoading(true);
+
     const filteredMovies = moviesArr.filter((i) => {
+      setIsLoading(false);
+
       return i.nameRU.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
@@ -169,39 +179,42 @@ function App() {
       if (isShortMovie) {
         return filterMoviesByDuration(filteredMovies);
       }
+      setIsLoading(false);
       return filteredMovies;
     }
   }
 
   //сохранить фильм
   function handleSaveMovie(movie) {
-    console.log(movie);
-    //console.log(savedMovies);
+    // console.log(movie);
     mainApi
       .saveMovie(movie)
       .then((res) => {
-        console.log(res);
-        /* const updatedSavedMovies = [
+        const updatedSavedMovies = [
           ...savedMovies,
-          { ...res, id: res.movieId },
-        ]; */
+          { ...res.movie, id: res.movie.movieId },
+        ];
 
-        //setSavedMovies(res);
+        setSavedMovies(updatedSavedMovies);
+        console.log(updatedSavedMovies);
       })
       .catch((err) => console.log(err));
   }
 
-  //удалить фильм из библиотеки
+  //удалить фильм
   function handleDeleteMovie(movie) {
+    // console.log(movie.nameRU);
     mainApi
       .deleteMovie(movie._id)
       .then((res) => {
-        const deletedCardIndex = savedMovies.findIndex(
+        // console.log(res);
+        const deletedMovieId = savedMovies.findIndex(
           (i) => i._id === movie._id
         );
         let newSavedMovies = [...savedMovies];
-        newSavedMovies.splice(deletedCardIndex, 1);
+        newSavedMovies.splice(deletedMovieId, 1);
         setSavedMovies(newSavedMovies);
+        // console.log(savedMovies);
       })
       .catch((err) => console.log(err));
   }
@@ -213,28 +226,32 @@ function App() {
     }
   }
 
+  //console.log(localStorage);
+  // console.log(isLoggedIn);
+  // console.log(currentUser);
+
   return (
-    <CurrentUserContext.Provider value={userData}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
         {(pathname === '/' ||
           pathname === '/movies' ||
           pathname === '/saved-movies' ||
           pathname === '/profile') && <Header isLoggedIn={isLoggedIn} />}
-
         <Switch>
           <Route exact path='/'>
             <Main />
           </Route>
 
-          <Route path='/movies'>
+          <Route exact path='/movies'>
             <Movies
+              isLoggedIn={isLoggedIn}
               moviesArray={moviesArray}
-              savedMovies={savedMovies}
               searchMovies={searchMovies}
               filteredMovies={filteredMovies}
               setFilteredMovies={setFilteredMovies}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+              savedMovies={savedMovies}
               setSavedMovies={setSavedMovies}
               handleSaveMovie={handleSaveMovie}
               handleRemoveSavedMovie={handleRemoveSavedMovie}
@@ -243,18 +260,20 @@ function App() {
 
           <Route path='/saved-movies'>
             <SavedMovies
-              savedMovies={savedMovies}
+              isLoggedIn={isLoggedIn}
               searchMovies={searchMovies}
+              filteredMovies={filteredMovies}
               setFilteredMovies={setFilteredMovies}
               isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              filteredMovies={filteredMovies}
+              savedMovies={savedMovies}
               handleDeleteMovie={handleDeleteMovie}
+              isSavePageTemplate={true}
             />
           </Route>
 
           <Route path='/profile'>
             <Profile
+              isLoggedIn={isLoggedIn}
               handleEditUser={handleEditUser}
               handleLogOut={handleLogOut}
             />
@@ -263,6 +282,7 @@ function App() {
           <Route path='/signin'>
             {isLoggedIn ? <Redirect to='/movies' /> : <Login onLog={onLog} />}
           </Route>
+
           <Route path='/signup'>
             {isLoggedIn ? (
               <Redirect to='/movies' />
@@ -275,32 +295,10 @@ function App() {
             <NotFoundPage />
           </Route>
         </Switch>
+
         {(pathname === '/' ||
           pathname === '/movies' ||
           pathname === '/saved-movies') && <Footer />}
-
-        {/*<Route path='/movies'>
-            <Header loggedIn={true} />
-            <Movies
-              moviesArray={moviesArray}
-              isLoading={isLoading}
-              searchMovies={searchMovies}
-              setFilteredMovies={setFilteredMovies}
-              // loggedIn={loggedIn}
-              savedMovies={savedMovies}
-              // onSaveMovie={saveMovie}
-              // onDeleteMovie={deleteMovie}
-            />
-            <Footer />
-  </Route>*/}
-
-        {/* <Route path='/profile'>
-            <Header loggedIn={true} />
-            <Profile />
-</Route>
-<Route path='/signin'>
-            {isLoggedIn ? <Redirect to='/movies' /> : <Login onLog={onLog} />}
-          </Route> */}
 
         <BurgerMenuPopup
         // isOpen={isOpenPopup}

@@ -9,7 +9,7 @@ function Login({ onLog }) {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ mode: 'onChange' });
 
   const [email, password] = watch(['email', 'password']);
@@ -67,7 +67,11 @@ function Login({ onLog }) {
           )}
         </label>
 
-        <button className='login__button' type='submit'>
+        <button
+          className={`${isValid ? 'login__button' : 'login__button_disabled'}`}
+          type='submit'
+          disabled={!isValid}
+        >
           Войти
         </button>
       </form>

@@ -5,15 +5,14 @@ import './Movies.css';
 
 function Movies({
   moviesArray,
-  savedMovies,
   searchMovies,
   filteredMovies,
   setFilteredMovies,
   isLoading,
+  savedMovies,
   setSavedMovies,
   handleSaveMovie,
   handleRemoveSavedMovie,
-  setIsLoading,
 }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isShort, setIsShort] = useState(false);
@@ -26,6 +25,7 @@ function Movies({
       const moviesSearchResults = JSON.parse(
         localStorage.getItem('moviesSearchResults')
       );
+      //console.log(moviesSearchResults);
 
       setInputValue(moviesSearchResults.searchQuery);
       setSearchQuery(moviesSearchResults.searchQuery);
@@ -34,12 +34,11 @@ function Movies({
     }
   }, []);
 
-  console.log(inputValue);
-
   useEffect(() => {
     const filteredMovies = searchMovies(moviesArray, searchQuery, isShort);
-
     setFilteredMovies(filteredMovies);
+    // console.log(searchQuery);
+
     localStorage.setItem(
       'moviesSearchResults',
       JSON.stringify({
@@ -55,7 +54,7 @@ function Movies({
   return (
     <section className='content'>
       <SearchForm
-        searchQuery={searchQuery}
+        isFirstSearch={isFirstSearch}
         setSearchQuery={setSearchQuery}
         isShort={isShort}
         setIsShort={setIsShort}
@@ -63,18 +62,14 @@ function Movies({
         setInputValue={setInputValue}
       />
       <MoviesCardList
-        handleSaveMovie={handleSaveMovie}
-        setSavedMovies={setSavedMovies}
-        isShort={isShort}
-        searchQuery={searchQuery}
-        savedMovies={savedMovies}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
         filteredMovies={filteredMovies}
-        searchMovies={searchMovies}
+        savedMovies={savedMovies}
+        isFirstSearch={isFirstSearch}
+        isLoading={isLoading}
+        setSavedMovies={setSavedMovies}
         isSavePageTemplate={false}
         handleRemoveSavedMovie={handleRemoveSavedMovie}
-        isFirstSearch={isFirstSearch}
+        handleSaveMovie={handleSaveMovie}
       />
     </section>
   );

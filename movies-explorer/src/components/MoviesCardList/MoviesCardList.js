@@ -4,15 +4,15 @@ import Preloader from '../Preloader/Preloader';
 import './MoviesCardList.css';
 
 const MoviesCardList = ({
-  handleSaveMovie,
-  savedMovies,
-  setSavedMovies,
   filteredMovies,
-  isLoading,
-  isSavePageTemplate,
-  handleDeleteMovie,
-  handleRemoveSavedMovie,
+  savedMovies,
   isFirstSearch,
+  isLoading,
+  setSavedMovies,
+  isSavePageTemplate,
+  handleSaveMovie,
+  handleRemoveSavedMovie,
+  handleDeleteMovie,
 }) => {
   const [windowInnerWidth, setWindowInnerWidth] = useState(window.innerWidth);
   const [cardsCount, setCardsCount] = useState(5);
@@ -52,11 +52,10 @@ const MoviesCardList = ({
     setCardsCount(cardsCount + moreCardsCount);
   }
 
-  // console.log(isSavePageTemplate);
   return (
     <>
       {
-        // Найденные фильмы
+        // Найденые фильмы
       }
       {isSavePageTemplate === false && (
         <ul className='movies'>
@@ -65,6 +64,7 @@ const MoviesCardList = ({
             <p>Ничего не найдено</p>
           )}
           {filteredMovies.slice(0, cardsCount).map((movie) => {
+            // console.log(movie);
             return (
               <MoviesCard
                 {...movie}
@@ -99,6 +99,7 @@ const MoviesCardList = ({
       {
         // Сохраненные фильмы
       }
+
       {isSavePageTemplate === true && (
         <ul className='movies'>
           {isLoading && <Preloader />}
@@ -106,15 +107,16 @@ const MoviesCardList = ({
             <p>Ничего не найдено</p>
           )}
           {filteredMovies.map((movie) => {
+            // console.log(movie);
             return (
               <MoviesCard
                 {...movie}
                 movie={movie}
-                key={movie.movieId}
+                key={movie.id}
                 imgLink={movie.image}
-                isSavePageTemplate={isSavePageTemplate}
                 imgAlt={movie.nameRU}
                 trailerLink={movie.trailerLink}
+                isSavePageTemplate={isSavePageTemplate}
                 handleDeleteMovie={handleDeleteMovie}
               />
             );

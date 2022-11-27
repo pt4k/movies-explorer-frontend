@@ -1,34 +1,35 @@
 import './FilterCheckbox.css';
 
 function FilterCheckbox({ isShortFilm, setIsShortFilm }) {
-  function handleChangeCheckbox() {
+  function handleChange() {
     setIsShortFilm(!isShortFilm);
   }
 
-  console.log(isShortFilm);
+  // console.log(isShortFilm);
   return (
     <div className='filterCheckbox__wrap'>
       <div className='filterCheckbox__radios'>
         <label className='filterCheckbox__label'>
           <input
             className='filterCheckbox__radio_invisible'
-            onChange={handleChangeCheckbox}
+            onChange={handleChange}
             type='radio'
             name='choice'
             id='no'
             value='no'
-            checked
+            checked={!isShortFilm}
           />
           <span className='filterCheckbox__radio_visible'></span>
         </label>
         <label className='filterCheckbox__label'>
           <input
             className='filterCheckbox__radio_invisible'
-            onChange={handleChangeCheckbox}
+            onChange={handleChange}
             type='radio'
             name='choice'
             id='yes'
             value='yes'
+            checked={isShortFilm}
           />
           <span className='filterCheckbox__radio_visible'></span>
         </label>

@@ -70,6 +70,18 @@
   transition: opacity 0.3s ease;
 }
 
+.profile__button_disabled {
+  margin: 220px 0 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  height: 17px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #8b8b8b;
+}
+
 .profile__button:hover {
   opacity: 0.5;
 }
