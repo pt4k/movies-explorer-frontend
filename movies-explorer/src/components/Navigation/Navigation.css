@@ -35,6 +35,10 @@
   margin-right: 0;
 }
 
+.navigation__link_active {
+  color: #2be080;
+}
+
 .navigation__account {
   display: flex;
   align-items: center;

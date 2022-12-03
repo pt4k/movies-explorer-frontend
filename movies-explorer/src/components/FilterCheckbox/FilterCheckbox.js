@@ -5,7 +5,6 @@ function FilterCheckbox({ isShortFilm, setIsShortFilm }) {
     setIsShortFilm(!isShortFilm);
   }
 
-  // console.log(isShortFilm);
   return (
     <div className='filterCheckbox__wrap'>
       <div className='filterCheckbox__radios'>

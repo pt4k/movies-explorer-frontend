@@ -22,7 +22,6 @@ function MoviesCard({
   handleRemoveSavedMovie,
 }) {
   const movieServerUrl = 'https://api.nomoreparties.co';
-  // console.log(isSave);
 
   function handleLikeButton() {
     if (isSave === false) {

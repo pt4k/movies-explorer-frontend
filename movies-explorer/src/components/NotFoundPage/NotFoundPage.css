@@ -19,13 +19,21 @@
   margin: 0 0 184px;
 }
 
-.notFoundPage__link {
+.notFoundPage__button {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
   text-align: center;
   color: #4285f4;
-  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notFoundPage__button:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {

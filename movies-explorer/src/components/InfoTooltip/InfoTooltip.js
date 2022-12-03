@@ -2,8 +2,8 @@ import './InfoTooltip.css';
 
 const InfoTooltip = ({ isOpen, title, onClose, icon }) => {
   return (
-    <div className={`popup ${isOpen && 'popup_opened'}`}>
-      <div className='popup__window'>
+    <div className={`info__popup ${isOpen && 'popup_opened'}`}>
+      <div className='info__popup__window'>
         <button
           className='popup__close-button'
           type='button'

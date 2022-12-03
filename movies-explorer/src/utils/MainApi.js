@@ -1,3 +1,5 @@
+import { MAIN_API_URL } from './constants';
+
 class MainApi {
   constructor({ url }) {
     this._url = url;
@@ -94,10 +96,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: 'http://localhost:3005',
+  url: MAIN_API_URL,
 });
 
 export default mainApi;
-
-// 'http://localhost:3005'
-// 'https://api.movies.pishchenko.nomoredomains.icu'

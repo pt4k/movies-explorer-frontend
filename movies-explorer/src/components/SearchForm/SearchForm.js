@@ -19,7 +19,6 @@ function SearchForm({
     setInputValue(evt.target.value);
   }
 
-  //  console.log(inputValue);
   return (
     <section className='searchForm'>
       <form className='searchForm__form' onSubmit={handleSubmitForm} noValidate>

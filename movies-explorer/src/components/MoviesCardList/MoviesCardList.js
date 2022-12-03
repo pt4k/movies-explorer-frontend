@@ -2,6 +2,18 @@ import { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
 import './MoviesCardList.css';
+import {
+  CARDS_COUNT_MAX_WINDOW_SIZE,
+  CARDS_COUNT_MEDIUM_WINDOW_SIZE,
+  CARDS_COUNT_MIN_WINDOW_SIZE,
+  NEXT_CARDS_COUNT_MAX_WINDOW_SIZE,
+  NEXT_CARDS_COUNT_MEDIUM_WINDOW_SIZE,
+  NEXT_CARDS_COUNT_MIN_WINDOW_SIZE,
+  MAX_WINDOW_SIZE,
+  MEDIUM_WINDOW_SIZE,
+  MIN_WINDOW_SIZE,
+  MOVIES_IMAGE_URL,
+} from '../../utils/constants';
 
 const MoviesCardList = ({
   filteredMovies,
@@ -18,21 +30,18 @@ const MoviesCardList = ({
   const [cardsCount, setCardsCount] = useState(5);
   const [moreCardsCount, setMoreCardsCount] = useState(0);
 
-  const movieServerUrl = 'https://api.nomoreparties.co';
+  const movieServerUrl = MOVIES_IMAGE_URL;
 
   const checkCardsCount = () => {
-    if (windowInnerWidth >= 1920) {
-      setCardsCount(15);
-      setMoreCardsCount(5);
-    } else if (windowInnerWidth >= 1280) {
-      setCardsCount(12);
-      setMoreCardsCount(3);
-    } else if (windowInnerWidth >= 481) {
-      setCardsCount(8);
-      setMoreCardsCount(2);
-    } else if (windowInnerWidth <= 480) {
-      setCardsCount(5);
-      setMoreCardsCount(1);
+    if (windowInnerWidth >= MAX_WINDOW_SIZE) {
+      setCardsCount(CARDS_COUNT_MAX_WINDOW_SIZE);
+      setMoreCardsCount(NEXT_CARDS_COUNT_MAX_WINDOW_SIZE);
+    } else if (windowInnerWidth >= MEDIUM_WINDOW_SIZE) {
+      setCardsCount(CARDS_COUNT_MEDIUM_WINDOW_SIZE);
+      setMoreCardsCount(NEXT_CARDS_COUNT_MEDIUM_WINDOW_SIZE);
+    } else if (windowInnerWidth <= MIN_WINDOW_SIZE) {
+      setCardsCount(CARDS_COUNT_MIN_WINDOW_SIZE);
+      setMoreCardsCount(NEXT_CARDS_COUNT_MIN_WINDOW_SIZE);
     }
   };
 
@@ -51,7 +60,6 @@ const MoviesCardList = ({
     checkCardsCount();
     setCardsCount(cardsCount + moreCardsCount);
   }
-  // console.log(filteredMovies);
 
   return (
     <>
@@ -107,7 +115,6 @@ const MoviesCardList = ({
             <p>Ничего не найдено</p>
           )}
           {filteredMovies.map((movie) => {
-            // console.log(movie);
             return (
               <MoviesCard
                 {...movie}

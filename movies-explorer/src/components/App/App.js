@@ -22,6 +22,7 @@ import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import './App.css';
+import { SHORT_MOVIE } from '../../utils/constants';
 
 import iconSuccess from '../../images/Union.png';
 import iconFailed from '../../images/Unionfailed.png';
@@ -48,6 +49,7 @@ function App() {
 
   // запрос сохраненных фильмов
   useEffect(() => {
+    setIsLoading(false);
     mainApi
       .getSaveMovies()
       .then((res) => {
@@ -125,8 +127,6 @@ function App() {
 
   function handleLogOut() {
     localStorage.clear();
-    localStorage.removeItem('token');
-    localStorage.removeItem('moviesSearchResults');
 
     setIsLoggedIn(false);
     setCurrentUser({});
@@ -144,7 +144,10 @@ function App() {
           setIsLoggedIn(true);
           setCurrentUser(res);
         })
-        .catch((err) => err);
+        .catch((err) => {
+          console.log(err);
+          handleLogOut();
+        });
     } else {
       handleLogOut();
     }
@@ -208,12 +211,11 @@ function App() {
 
   // поиск и фильтры
   function filterMoviesByDuration(moviesArr) {
-    return moviesArr.filter((i) => i.duration < 40);
+    return moviesArr.filter((i) => i.duration < SHORT_MOVIE);
   }
 
   function searchMovies(moviesArr, searchQuery, isShortMovie, renderAll) {
     setIsLoading(true);
-
     const filteredMovies = moviesArr.filter((i) => {
       setIsLoading(false);
 
@@ -237,7 +239,6 @@ function App() {
 
   //сохранить фильм
   function handleSaveMovie(movie) {
-    // console.log(movie);
     mainApi
       .saveMovie(movie)
       .then((res) => {
@@ -247,18 +248,20 @@ function App() {
         ];
 
         setSavedMovies(updatedSavedMovies);
-        console.log(updatedSavedMovies);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err === 'Ошибка: 401') {
+          handleLogOut();
+        }
+      });
   }
 
   //удалить фильм
   function handleDeleteMovie(movie) {
-    // console.log(movie.nameRU);
     mainApi
       .deleteMovie(movie._id)
       .then((res) => {
-        // console.log(res);
         const deletedMovieId = savedMovies.findIndex(
           (i) => i._id === movie._id
         );
@@ -266,7 +269,6 @@ function App() {
 
         newSavedMovies.splice(deletedMovieId, 1);
         setSavedMovies(newSavedMovies);
-        // console.log(savedMovies);
       })
       .catch((err) => console.log(err));
   }
@@ -278,10 +280,11 @@ function App() {
     }
   }
 
-  console.log(localStorage);
+  // console.log(localStorage);
   // console.log(filteredMovies);
   // console.log(isLoggedIn);
   // console.log(currentUser);
+  // console.log(moviesArray);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

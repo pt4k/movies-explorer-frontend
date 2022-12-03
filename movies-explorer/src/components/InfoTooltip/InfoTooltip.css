@@ -23,7 +23,8 @@
   transition-delay: 0s;
 }
 
-.popup__window {
+.info__popup__window {
+  width: 420px;
   position: relative;
   background-color: white;
   display: flex;
@@ -87,4 +88,16 @@
   line-height: 1.2;
   text-align: center;
   margin: 0 auto 60px;
+}
+
+@media screen and (max-width: 767px) {
+  .info__popup__window {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .info__popup__window {
+    width: 210px;
+  }
 }

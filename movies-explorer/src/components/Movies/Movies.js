@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import './Movies.css';
 
 function Movies({
-  isLoggedIn,
   moviesArray,
   searchMovies,
   filteredMovies,
@@ -48,9 +46,8 @@ function Movies({
     );
 
     searchQuery === '' ? setIsFirstSearch(true) : setIsFirstSearch(false);
-  }, [searchQuery, isShort]);
+  }, [moviesArray, searchQuery, isShort]);
 
-  // console.log(localStorage);
   return (
     <section className='content'>
       <SearchForm
