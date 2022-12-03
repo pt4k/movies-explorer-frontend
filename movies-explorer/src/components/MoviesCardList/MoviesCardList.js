@@ -51,7 +51,7 @@ const MoviesCardList = ({
     checkCardsCount();
     setCardsCount(cardsCount + moreCardsCount);
   }
-  console.log(cardsCount);
+  // console.log(filteredMovies);
 
   return (
     <>

@@ -4,6 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import './Movies.css';
 
 function Movies({
+  isLoggedIn,
   moviesArray,
   searchMovies,
   filteredMovies,
@@ -25,7 +26,6 @@ function Movies({
       const moviesSearchResults = JSON.parse(
         localStorage.getItem('moviesSearchResults')
       );
-      //console.log(moviesSearchResults);
 
       setInputValue(moviesSearchResults.searchQuery);
       setSearchQuery(moviesSearchResults.searchQuery);
@@ -37,7 +37,6 @@ function Movies({
   useEffect(() => {
     const filteredMovies = searchMovies(moviesArray, searchQuery, isShort);
     setFilteredMovies(filteredMovies);
-    // console.log(searchQuery);
 
     localStorage.setItem(
       'moviesSearchResults',
@@ -51,6 +50,7 @@ function Movies({
     searchQuery === '' ? setIsFirstSearch(true) : setIsFirstSearch(false);
   }, [searchQuery, isShort]);
 
+  // console.log(localStorage);
   return (
     <section className='content'>
       <SearchForm

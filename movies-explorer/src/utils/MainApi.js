@@ -94,7 +94,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: 'https://api.movies.pishchenko.nomoredomains.icu',
+  url: 'http://localhost:3005',
 });
 
 export default mainApi;

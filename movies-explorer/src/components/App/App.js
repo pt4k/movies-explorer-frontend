@@ -20,7 +20,11 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import './App.css';
+
+import iconSuccess from '../../images/Union.png';
+import iconFailed from '../../images/Unionfailed.png';
 
 function App() {
   const [moviesArray, setMoviesArray] = useState([]); //массив фильмов
@@ -30,6 +34,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isInfoTooltip, setIsInfoTooltip] = useState(false);
+  const [infoTooltipText, setInfoTooltipText] = useState('');
+  const [infoTooltipImage, setInfoTooltipImage] = useState(undefined);
 
   const { pathname } = useLocation();
   const history = useHistory();
@@ -71,10 +78,21 @@ function App() {
     mainApi
       .register(name, email, password)
       .then(() => {
+        handleInfoTooltip(iconSuccess, 'Вы успешно зарегистрировались!');
         onLog({ email, password });
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 409') {
+          handleInfoTooltip(iconFailed, 'Такой email уже существует!');
+        } else if (err === 'Ошибка: 500') {
+          handleInfoTooltip(iconFailed, 'Ошибка 500: Internal Server Error');
+        } else {
+          handleInfoTooltip(
+            iconFailed,
+            'Что-то пошло не так! Попробуйте ещё раз.'
+          );
+        }
       })
       .finally(() => setIsLoading(false));
   }
@@ -91,12 +109,24 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 401') {
+          handleInfoTooltip(iconFailed, 'Неправильные почта или пароль!');
+        } else if (err === 'Ошибка: 500') {
+          handleInfoTooltip(iconFailed, 'Ошибка 500: Internal Server Error');
+        } else {
+          handleInfoTooltip(
+            iconFailed,
+            'Что-то пошло не так! Попробуйте ещё раз.'
+          );
+        }
       })
       .finally(() => setIsLoading(false));
   }
 
   function handleLogOut() {
     localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('moviesSearchResults');
 
     setIsLoggedIn(false);
     setCurrentUser({});
@@ -150,9 +180,14 @@ function App() {
         setCurrentUser(res.data);
         setIsLoading(false);
         console.log(currentUser);
+        handleInfoTooltip(iconSuccess, 'Данные изменены!');
       })
       .catch((err) => {
         console.log(err);
+        handleInfoTooltip(
+          iconFailed,
+          'Что-то пошло не так! Попробуйте ещё раз.'
+        );
       });
   }
 
@@ -160,8 +195,15 @@ function App() {
     setIsOpen(true);
   };
 
+  const handleInfoTooltip = (image, text) => {
+    setInfoTooltipText(text);
+    setInfoTooltipImage(image);
+    setIsInfoTooltip(true);
+  };
+
   const closePopup = () => {
     setIsOpen(false);
+    setIsInfoTooltip(false);
   };
 
   // поиск и фильтры
@@ -221,6 +263,7 @@ function App() {
           (i) => i._id === movie._id
         );
         let newSavedMovies = [...savedMovies];
+
         newSavedMovies.splice(deletedMovieId, 1);
         setSavedMovies(newSavedMovies);
         // console.log(savedMovies);
@@ -235,7 +278,8 @@ function App() {
     }
   }
 
-  //console.log(localStorage);
+  console.log(localStorage);
+  // console.log(filteredMovies);
   // console.log(isLoggedIn);
   // console.log(currentUser);
 
@@ -253,7 +297,7 @@ function App() {
             <Main />
           </Route>
 
-          <Route exact path='/movies'>
+          <Route path='/movies'>
             <Movies
               isLoggedIn={isLoggedIn}
               moviesArray={moviesArray}
@@ -306,6 +350,13 @@ function App() {
             <NotFoundPage />
           </Route>
         </Switch>
+
+        <InfoTooltip
+          isOpen={isInfoTooltip}
+          onClose={closePopup}
+          title={infoTooltipText}
+          icon={infoTooltipImage}
+        />
 
         {(pathname === '/' ||
           pathname === '/movies' ||
