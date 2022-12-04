@@ -3,11 +3,16 @@ import acc from '../../images/acc.svg';
 import close from '../../images/close.svg';
 import './BurgerMenuPopup.css';
 
-function BurgerMenuPopup({ isOpen }) {
+function BurgerMenuPopup({ isOpen, onClose }) {
   return (
     <section className={`popup ${isOpen ? 'popup_opened' : ''}`}>
       <div className='popup__window'>
-        <img className='popup__close' alt='Кнопка закрыть' src={close} />
+        <img
+          className='popup__close'
+          alt='Кнопка закрыть'
+          src={close}
+          onClick={onClose}
+        />
         <div className='popup__links'>
           <Link to='/' className='popup__link'>
             Главная

@@ -1,39 +1,48 @@
-import { useState } from 'react';
 import loupe from '../../images/loupe.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import mainApi from '../../utils/MainApi';
 import './SearchForm.css';
 
-function SearchForm({}) {
-  const [nameMovie, setNameMovie] = useState('');
-
-  const resetForm = () => {
-    setNameMovie('');
-  };
-
-  const handleSubmit = (evt) => {
+function SearchForm({
+  isFirstSearch,
+  setSearchQuery,
+  isShort,
+  setIsShort,
+  inputValue,
+  setInputValue,
+}) {
+  function handleSubmitForm(evt) {
     evt.preventDefault();
+    setSearchQuery(inputValue);
+  }
 
-    resetForm();
-  };
+  function handleSearchInput(evt) {
+    setInputValue(evt.target.value);
+  }
 
   return (
     <section className='searchForm'>
-      <form className='searchForm__form' type='text' onSubmit={handleSubmit}>
+      <form className='searchForm__form' onSubmit={handleSubmitForm} noValidate>
         <img className='searchForm__img' src={loupe} alt='Лупа' />
-        <input
-          className='searchForm__input'
-          placeholder='Фильм'
-          name='search'
-          value={nameMovie}
-          onChange={({ target }) => setNameMovie(target.value)}
-          required
-        />
+        <label className='searchForm__field'>
+          <input
+            className='searchForm__input'
+            placeholder='Фильм'
+            name='search'
+            onChange={handleSearchInput}
+            value={inputValue}
+            required
+          />
+          {isFirstSearch && (
+            <span className='searchForm__input-error'>
+              Нужно ввести ключевое слово
+            </span>
+          )}
+        </label>
         <button className='searchForm__button' type='submit'>
           Найти
         </button>
         <div className='searchForm__line'></div>
-        <FilterCheckbox />
+        <FilterCheckbox isShortFilm={isShort} setIsShortFilm={setIsShort} />
       </form>
     </section>
   );

@@ -1,30 +1,42 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import acc from '../../images/acc.svg';
 import burger_menu from '../../images/burger_menu.svg';
 import './Navigation.css';
-import BurgerMenuPopup from '../BurgerMenuPopup/BurgerMenuPopup';
 
-function Navigation({ loggedIn }) {
+function Navigation({ isLoggedIn, handleOpenPopup }) {
   return (
     <section className='navigation'>
-      {loggedIn ? (
+      {isLoggedIn ? (
         <div className='navigation__onLog'>
           <div className='navigation__links'>
-            <Link to='/movies' className='navigation__link'>
+            <NavLink
+              exact
+              to='/movies'
+              className='navigation__link'
+              activeClassName='navigation__link_active'
+            >
               Фильмы
-            </Link>{' '}
-            <Link to='/saved-movies' className='navigation__link'>
+            </NavLink>{' '}
+            <NavLink
+              to='/saved-movies'
+              className='navigation__link'
+              activeClassName='navigation__link_active'
+            >
               Сохранённые фильмы
-            </Link>
+            </NavLink>
           </div>
           <div className='navigation__account'>
-            <Link to='/profile' className='navigation__link'>
+            <NavLink
+              to='/profile'
+              className='navigation__link'
+              activeClassName='navigation__link_active'
+            >
               Аккаунт
-            </Link>{' '}
+            </NavLink>{' '}
             <img className='navigation__img' src={acc} alt='Аккаунт' />
           </div>
           <div className='navigation__burger-menu'>
-            <img src={burger_menu} alt='Меню' />
+            <img src={burger_menu} alt='Меню' onClick={handleOpenPopup} />
           </div>
         </div>
       ) : (

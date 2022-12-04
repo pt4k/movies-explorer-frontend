@@ -35,6 +35,10 @@
   margin-right: 0;
 }
 
+.navigation__link_active {
+  color: #2be080;
+}
+
 .navigation__account {
   display: flex;
   align-items: center;
@@ -133,5 +137,9 @@
 
   .navigation__burger-menu {
     margin-right: 14px;
+  }
+
+  .navigation__onLog {
+    margin-right: 0;
   }
 }
